@@ -133,10 +133,11 @@ $(document).ready(function() {
     var inputSauce = $("input#sauce").val();
     var inputBasicToppings = $("input#basicToppings").val();
     var inputPremiumToppings = $("input#premiumToppings").val();
-    $("input#size").val("");
-    $("input#sauce").val("");
-    $("input#basicToppings").val("");
-    $("input#premiumToppings").val("");
+    console.log(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings)
+    // $("input#size").val("");
+    // $("input#sauce").val("");
+    // $("input#basicToppings").val("");
+    // $("input#premiumToppings").val("");
     var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
     userOrder.addPizza(myPizza);
   })
