@@ -107,9 +107,9 @@ function displayOrder(orderToDisplay) {
 function pizzaDetails() {
   var toppings = pizza.basicToppings.toStr() + pizza.premiumToppings.toStr();
   $("#pizzaDetails").show()
-  $("#size").html(pizza.size);
-  $("#sauce").html(pizza.sauce);
-  $("#toppings").html(toppings);
+  $("#pizzaSize").html(pizza.size);
+  $("#pizzaSauce").html(pizza.sauce);
+  $("#pizzaToppings").html(toppings);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
@@ -127,18 +127,20 @@ function onClick () {
 
 $(document).ready(function() {
   onClick();
-  $("form#order").submit(function(event) {
+  $("#orderForm").submit(function(event) {
     event.preventDefault();
     var inputSize = $("input#size").val();
     var inputSauce = $("input#sauce").val();
     var inputBasicToppings = $("input#basicToppings").val();
     var inputPremiumToppings = $("input#premiumToppings").val();
     console.log(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings)
+
     // $("input#size").val("");
     // $("input#sauce").val("");
     // $("input#basicToppings").val("");
     // $("input#premiumToppings").val("");
-    var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
-    userOrder.addPizza(myPizza);
-  })
+
+    // var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
+    // userOrder.addPizza(myPizza);
+   })
 });
