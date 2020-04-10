@@ -26,7 +26,6 @@
             <select id="sauce">
               <option value="red">Traditional Red Sauce</option>
               <option value="oil">Olive Oil & Garlic</option>
-              <option value="white">Alfredo (add $1.50)</option>
             </select>
           <div class="form-group" id="basicToppings">
             <p><b>Add Basic Toppings:</b></p>
@@ -44,6 +43,7 @@
             <input type="checkbox" name="basicToppings" value="pineapple">Pineapple<br>
             <input type="checkbox" name="basicToppings" value="jalapenos">Jalapenos<br>
           <div class="form-group" id="premiumToppings">
+            <p></p>
             <p><b>Add Premium Toppings:</b></p>
             <p>$2/each - Small, $3/each - Medium & Large</p>
             <input type="checkbox" name="premiumToppings" value="chicken"> Roasted Chicken <br>
@@ -54,17 +54,23 @@
             <input type="checkbox" name="premiumToppings" value="redPepper"> Roasted Red Peppers <br>
             <input type="checkbox" name="premiumToppings" value="feta"> Feta Cheese <br>
           </div>
-
+          <button type="submit" id="addPizza" class="btn-primary" form="order">Add to Order</button>
           </div>
         </form>
-
-
-        <button type="submit" id="addOrder" class="btn-primary">Add to Order</button>
       </div>
 <br>
       <div id="priceDisplay">
-
-
+        <form id="confirm">
+          <h4>Your Order:</h4>
+          <ul id="orderItems"></ul>
+          <p id="orderTotal">Your Total: </p>
+          <label for="email">Enter Email: </label>
+          <input id="email" type="email">
+          <button type="button" id="confirmOrder" class="btn-primary">Confirm Order</button>
+        </form>
+        <div id="thankYou">
+          <h4>Thank you for your order! We will email you shortly with details!</h4>
+        </div>
       </div>
 
     </div>
