@@ -96,7 +96,7 @@ function displayOrder(orderToDisplay) {
   var orderItems = $("ul#orderItems");
   var htmlForPizza = "";
   orderToDisplay.pizzas.forEach(function(pizza) {
-    htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with" + pizza.totalToppings + "toppings: $" + pizza.price + "</li>" + "<div id="buttons"></div>";
+    htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with" + pizza.totalToppings + "toppings: $" + pizza.price + "</li>";
   });
   orderItems.html(htmlForPizza);
   var buttons = $("#buttons");
@@ -110,6 +110,10 @@ function pizzaDetails() {
   $("#size").html(pizza.size);
   $("#sauce").html(pizza.sauce);
   $("#toppings").html(toppings);
+  var buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
+}
 
 
 function onClick () {
@@ -118,5 +122,22 @@ function onClick () {
   });
   $("#buttons").on("click", ".deleteButton", function() {
     Order.DeletePizza(this.id);
+})
 }
- 
+
+$(document).ready(function() {
+  onClick();
+  $("form#order").submit(function(event) {
+    event.preventDefault();
+    var inputSize = $("input#size").val();
+    var inputSauce = $("input#sauce").val();
+    var inputBasicToppings = $("input#basicToppings").val();
+    var inputPremiumToppings = $("input#premiumToppings").val();
+    $("input#size").val("");
+    $("input#sauce").val("");
+    $("input#basicToppings").val("");
+    $("input#premiumToppings").val("");
+    var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
+    userOrder.addPizza(myPizza);
+  })
+});
