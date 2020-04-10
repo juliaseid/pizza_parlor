@@ -12,8 +12,54 @@
       <h2>Athena's Pizza</h3>
       <h4>A Family-Owned Greek Pizzeria</h4>
       <h4>Celebrating 40 Years!</h4>
+<br>      
       <div id="order">
+        <form id="order">
+          <h4>Order Pizzas Here:</h4>
+          <label for="size">Size:</label>
+            <select id="size">
+              <option value="large">Large (18")</option>
+              <option value="medium">Medium (16")</option>
+              <option value="small">Small (14")</option>
+            </select>
+          <label for="sauce">Sauce:</label>
+            <select id="sauce">
+              <option value="red">Traditional Red Sauce</option>
+              <option value="oil">Olive Oil & Garlic</option>
+              <option value="white">Alfredo (add $1.50)</option>
+            </select>
+          <div class="form-group" id="basicToppings">
+            <p><b>Add Basic Toppings:</b></p>
+            <p>$1/each - Small, $1.50/each - Medium & Large</p>
+            <input type="checkbox" name="basicToppings" value="pepperoni"> Pepperoni<br>
+            <input type="checkbox" name="basicToppings" value="basil"> Basil<br>
+            <input type="checkbox" name="basicToppings" value="spinach"> Spinach<br>
+            <input type="checkbox" name="basicToppings" value="blackOlives"> Black Olives<br>
+            <input type="checkbox" name="basicToppings" value="onion"> Onion<br>
+            <input type="checkbox" name="basicToppings" value="mushroom"> Mushrooms<br>
+            <input type="checkbox" name="basicToppings" value="greenPepper"> Green Bell Peppers<br>
+            <input type="checkbox" name="basicToppings" value="tomato"> Chopped Tomatoes<br>
+            <input type="checkbox" name="basicToppings" value="broccoli"> Broccoli<br>
+            <input type="checkbox" name="basicToppings" value="beef">Ground Beef<br>
+            <input type="checkbox" name="basicToppings" value="pineapple">Pineapple<br>
+            <input type="checkbox" name="basicToppings" value="jalapenos">Jalapenos<br>
+          <div class="form-group" id="premiumToppings">
+            <p><b>Add Premium Toppings:</b></p>
+            <p>$2/each - Small, $3/each - Medium & Large</p>
+            <input type="checkbox" name="premiumToppings" value="chicken"> Roasted Chicken <br>
+            <input type="checkbox" name="premiumToppings" value="mildSausage"> Sweet Italian Sausage <br>
+            <input type="checkbox" name="premiumToppings" value="hotSausage"> Spicy Italian Sausage <br>
+            <input type="checkbox" name="premiumToppings" value="bacon"> Canadian Bacon <br>
+            <input type="checkbox" name="premiumToppings" value="artichoke"> Artichoke Hearts <br>
+            <input type="checkbox" name="premiumToppings" value="redPepper"> Roasted Red Peppers <br>
+            <input type="checkbox" name="premiumToppings" value="feta"> Feta Cheese <br>
+          </div>
 
+          </div>
+        </form>
+
+
+        <button type="submit" id="addOrder" class="btn-primary">Add to Order</button>
       </div>
 <br>
       <div id="priceDisplay">
