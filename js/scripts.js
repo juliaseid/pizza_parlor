@@ -1,14 +1,16 @@
-function Order () {
+function Order (ID) {
   this.pizzas = []
-}
-
-Order.prototype.addPizza = function(pizza) {
-  this.pizzas.push(pizza);
+  this.ID = 0
 }
 
 Order.prototype.assignID = function() {
   this.ID += 1;
   return this.ID;
+}
+
+Order.prototype.addPizza = function(pizza) {
+  this.pizzas.push(pizza);
+  pizza.ID=this.assignID();
 }
 
 Order.prototype.TotalPrice = function() {
@@ -19,10 +21,10 @@ Order.prototype.TotalPrice = function() {
   return totalPrice;
 };
 
-Order.prototype.FindPizza = function(id) {
+Order.prototype.FindPizza = function(ID) {
   for (var i=0; i< this.pizzas.length; i++) {
     if (this.pizzas[i]) {
-      if (this.pizzas[i].ID == id) {
+      if (this.pizzas[i].ID == ID) {
         return this.pizzas[i];
       }
     }
@@ -30,10 +32,10 @@ Order.prototype.FindPizza = function(id) {
   return false;
 }
 
-Order.prototype.DeletePizza = function(id) {
+Order.prototype.DeletePizza = function(ID) {
   for (var i=0; i< this.pizzas.length; i++) {
     if (this.pizzas[i]) {
-      if (this.pizzas[i].ID == id) {
+      if (this.pizzas[i].ID == ID) {
       delete this.contacts[i];
       return true;
       }
@@ -101,7 +103,7 @@ function displayOrder(orderToDisplay) {
   orderItems.html(htmlForPizza);
   var buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete Item</button>");
+  buttons.append("<button class='deleteButton' id=" + pizza.ID + ">Delete Item</button>");
 };
 
 function pizzaDetails() {
@@ -112,16 +114,16 @@ function pizzaDetails() {
   $("#pizzaToppings").html(toppings);
   var buttons = $("#buttons");
   buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
+  buttons.append("<button class='deleteButton' id=" + pizza.ID + ">Delete</button>");
 }
 
 
 function onClick () {
   $("li#orderItems").on("click", "li", function(){
-    pizzaDetails(id)
+    pizzaDetails(ID)
   });
   $("#buttons").on("click", ".deleteButton", function() {
-    Order.DeletePizza(this.id);
+    Order.DeletePizza(this.ID);
 })
 }
 
