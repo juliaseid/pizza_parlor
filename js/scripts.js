@@ -53,35 +53,35 @@ function Pizza (size, sauce, basicToppings, premiumToppings) {
 
 Pizza.prototype.Price = function() {
    var price=0;  
-   if (this.size="small") {
+   if (this.size==="small") {
      price += 12;
      this.basicToppings.forEach(function() {
        price += 1
       });
       this.premiumToppings.forEach(function () {
-        price =+ 2
+        price += 2
       });
     }
-    else if (this.size="medium") {
+    else if (this.size==="medium") {
       price += 16;
       this.basicToppings.forEach(function() {
         price += 2
        });
        this.premiumToppings.forEach(function () {
-         price =+ 3
+         price += 3
        });
     }
-    else if (this.size="large") {
+    else if (this.size==="large") {
       price += 22
       this.basicToppings.forEach(function() {
         price += 2
        });
        this.premiumToppings.forEach(function () {
-         price =+ 3
+         price += 3
        });
     }
-    if (this.sauce="white") {
-      price =+ 1.5
+    if (this.sauce==="white") {
+      price += 1.50
     }
     return price
   }
