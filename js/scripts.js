@@ -51,11 +51,6 @@ function Pizza (size, sauce, basicToppings, premiumToppings) {
   this.premiumToppings=premiumToppings;
 }
 
-Pizza.prototype.TotalToppings = function() {
-  var totalToppings=this.basicToppings.length() + this.premiumToppings.length()
-  return totalToppings
-}
-
 Pizza.prototype.Price = function() {
    var price=0;  
    if (this.size="small") {
@@ -94,16 +89,13 @@ Pizza.prototype.Price = function() {
 //UI 
 var userOrder = new Order();
 
-function displayOrder(orderToDisplay) {
+function displayOrder(userOrder) {
   var orderItems = $("ul#orderItems");
   var htmlForPizza = "";
-  orderToDisplay.pizzas.forEach(function(pizza) {
-    htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with" + pizza.totalToppings + "toppings: $" + pizza.price + "</li>";
+  userOrder.pizzas.forEach(function(pizza) {
+    htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.basicToppings.length + " basic topping(s) and " + pizza.premiumToppings.length + " premium topping(s): $"  + pizza.Price() + "</li>";
   });
   orderItems.html(htmlForPizza);
-  var buttons = $("#buttons");
-  buttons.empty();
-  buttons.append("<button class='deleteButton' id=" + pizza.ID + ">Delete Item</button>");
 };
 
 function pizzaDetails() {
@@ -143,6 +135,6 @@ $(document).ready(function() {
     });
     var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
     userOrder.addPizza(myPizza);
-    console.log(userOrder)
+    displayOrder(userOrder)
    })
 });
