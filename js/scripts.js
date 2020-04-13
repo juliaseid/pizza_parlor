@@ -91,15 +91,19 @@ var userOrder = new Order();
 
 function displayOrder(userOrder) {
   var orderItems = $("ul#orderItems");
+  var orderTotal = $("p#orderTotal");
   var htmlForPizza = "";
+  var htmlForPrice = "";
   userOrder.pizzas.forEach(function(pizza) {
     htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.basicToppings.length + " basic topping(s) and " + pizza.premiumToppings.length + " premium topping(s): $"  + pizza.Price() + "</li>";
   });
+  htmlForPrice = userOrder.TotalPrice();
+  orderTotal.html(htmlForPrice);
   orderItems.html(htmlForPizza);
 };
 
-function pizzaDetails() {
-  var toppings = pizza.basicToppings.toStr() + pizza.premiumToppings.toStr();
+function pizzaDetails(pizza) {
+  var toppings = pizza.basicToppings.toString() + pizza.premiumToppings.toString();
   $("#pizzaDetails").show()
   $("#pizzaSize").html(pizza.size);
   $("#pizzaSauce").html(pizza.sauce);
@@ -135,6 +139,7 @@ $(document).ready(function() {
     });
     var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
     userOrder.addPizza(myPizza);
-    displayOrder(userOrder)
+    displayOrder(userOrder);
+    pizzaDetails(myPizza);
    })
 });
