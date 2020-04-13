@@ -17,9 +17,11 @@ _Specifications:_
 
 * The user may substitute an olive oil or white sauce base.  Olive oil does not change the price; white sauce has an upcharge.
 
-* Then a user may select toppings.  The first 3 toppings have a fixed price.  Additional toppings are broken into price categories.
+* Then a user may select toppings.  The cost for toppings is based on category (basic and premium) and the size of the pizza selected.
 
-* 
+* Once a user has made selections, they press the "Add to Order" button.  This will open an order display with "Your Order" and "Your Total", as well as a "Confirm Order" button.
+
+* A user may add multiple pizzas to an order, and each will display as a separate list item, including individual cost.  The total price will update with each addition.
 
 
 ## Setup/Installation Requirements
@@ -29,7 +31,11 @@ _Specifications:_
 
 ## Known Bugs
 
-__
+* _The detail display and delete pizza functionality are not working because of a problem with the IDs.  In order to treat each pizza separately for a detail view and deletion, those functions must be associated with the order and the pizza's ID within that order, and that pathway is not working correctly, so no detail view or deletion function is available._
+
+* _There is no actual email functionality to the page._
+
+* _The sauce, size, and topping selectors do not reset after a pizza is added to the order, so by default, the second pizza will be the same as the first._
 
 ## Support and contact details
 

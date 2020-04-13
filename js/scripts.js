@@ -113,7 +113,7 @@ function displayOrder(userOrder) {
   var totalPrice = 0;
   var htmlForPrice = "";
   userOrder.pizzas.forEach(function(pizza) {
-    htmlForPizza += "<li id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.basicToppings.length + " basic topping(s) and " + pizza.premiumToppings.length + " premium topping(s): $"  + pizza.Price() + "</li>";
+    htmlForPizza += "<li class= 'detailView'  id=" + pizza.id + ">" + pizza.size + " pizza with " + pizza.basicToppings.length + " basic topping(s) and " + pizza.premiumToppings.length + " premium topping(s): $"  + pizza.Price() + "</li>";
   });
   userOrder.pizzas.forEach(function(pizza) {
     totalPrice += pizza.Price();
@@ -124,18 +124,7 @@ function displayOrder(userOrder) {
 };
 
 
-
-
-function onClick () {
-  $("li#orderItems").on("click", "li", function(){
-    $("#pizzaDetails").empty();
-    $("#pizzaDetails").show();
-    userOrder.pizzaDetails(pizza.ID);
-  });
-}
-
 $(document).ready(function() {
-  onClick();
   $("form#orderForm").submit(function(event) {
     event.preventDefault();
     inputSize = $("#size").val();
@@ -150,17 +139,25 @@ $(document).ready(function() {
     });
     var myPizza = new Pizza(inputSize, inputSauce, inputBasicToppings, inputPremiumToppings);
     userOrder.addPizza(myPizza);
+    userOrder.assignID(myPizza);
     displayOrder(userOrder);
-    pizzaDetails(myPizza);
     $("#priceDisplay").show();
-    $("#buttons").on("click", ".deleteButton", function() {
-      event.preventDefault();
-      Order.DeletePizza(pizza.ID);
-    });
-    $("form#confirm").submit(function (event) {
-      event.preventDefault();
-      $("#thankYou").show();
-    })  
+
+  $(".detailView").click(function(userOrder){
+    userOrder.PizzaDetails(ID);
+    $("#pizzaDetails").show();
+    
+  });
+
+  $("#buttons").on("click", ".deleteButton", function(userOrder) {
+    event.preventDefault();
+    userOrder.DeletePizza(ID);
+  });
+
+  $("form#confirm").submit(function (event) {
+    event.preventDefault();
+    $("#thankYou").show();
+  })  
 
    })
 });
